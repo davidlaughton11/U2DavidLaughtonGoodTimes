@@ -1,4 +1,4 @@
-﻿//David Laughton
+//David Laughton
 //March 25th 2019
 //Good times program to generate timezones
 using System;
@@ -26,7 +26,6 @@ namespace U2DavidLaughtonGoodTimes
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         //intigers for timezones 
@@ -39,17 +38,24 @@ namespace U2DavidLaughtonGoodTimes
         int timeott;
 
         private void BtnRun_Click(object sender, RoutedEventArgs e)
-        {            
+        {  
+            //creates int with the input time
             int.TryParse(txtInput.Text, out timeott);
              
-            //Main if statement that applys when all numbers will be in the range 0-2400 when adgusted
+            //Main if statement that applys when all other numbers will be in the range 0-2400 when adjusted
             if (timeott >= 300 && timeott <= 2230)
             {
+                // Atlantic time is 1 hour before ottawa time
                 AtlanticTime = timeott + 100;
+                //Newfounland time is 1 hour 30 min before
                 NewfoundlandTime = timeott + 130;
+                //Central time is 1 hour behind ottawa time
                 CentralTime = timeott - 100;
+                //Mountain time is 2 hours behind ottawa time
                 MountainTime = timeott - 200;
+                //Pacific time is 3 hours behind ottawa time
                 PaciﬁcTime = timeott - 300;
+                //Eastern time is ottawa time
                 EasternTime = timeott;
             }
             //All other else if statements address the idividual changes the timezones they would become a fake time
@@ -62,6 +68,7 @@ namespace U2DavidLaughtonGoodTimes
                 PaciﬁcTime = timeott - 300;
                 EasternTime = timeott;
             }
+            //to make the newfoundland a time before 0-2359
             else if (timeott >= 2230 && timeott <= 2300)
             {
                 AtlanticTime = timeott + 100;
@@ -98,7 +105,7 @@ namespace U2DavidLaughtonGoodTimes
                 PaciﬁcTime = timeott + 2100;
                 EasternTime = timeott;
             }
-            //output times 
+            //output times with the city and a new line 
             lblOutput.Content = 
                 EasternTime + "in Ottawa" + Environment.NewLine 
                 + PaciﬁcTime + " in Victoria" + Environment.NewLine 
